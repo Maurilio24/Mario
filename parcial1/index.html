@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto con Pestañas y Modales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            margin-bottom: 20px;
+            background-color: #d3d3d3;
+            padding: 10px 0;
+        }
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px 0;
+            border: 1px solid #ccc;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+            padding: 0 20px;
+        }
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #ccc;
+            padding: 20px;
+            background: white;
+            z-index: 1000;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .modal.active {
+            display: block;
+        }
+        .modal .close {
+            cursor: pointer;
+            float: right;
+            font-size: 20px;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        .overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <div class="tab" onclick="showTab('tab1')">Conceptos</div>
+        <div class="tab" onclick="showTab('tab2')">Curriculums</div>
+        <div class="tab" onclick="showTab('tab3')">Calculadoras</div>
+    </div>
+
+    <div id="tab1" class="tab-content active">
+        <!-- 8 Contenedores -->
+        <div class="container">
+            <h3>Administracion</h3>
+            <button onclick="openModal('modal1')">Abrir</button>
+        </div>
+        <div class="container">
+            <h3>Negociacion</h3>
+            <button onclick="openModal('modal2')">Abrir</button>
+        </div>
+        <div class="container">
+            <h3>Manipulacion</h3>
+            <button onclick="openModal('modal3')">Abrir</button>
+        </div>
+        <div class="container">
+            <h3>Eficiencia</h3>
+            <button onclick="openModal('modal4')">Abrir</button>
+        </div>
+        <div class="container">
+            <h3>Administracion de proyectos</h3>
+            <button onclick="openModal('modal5')">Abrir</button>
+        </div>
+        <div class="container">
+            <h3>Proceso administrativo</h3>
+            <button onclick="openModal('modal6')">Abrir</button>
+        </div>
+        <div class="container">
+            <h3>Eficacia</h3>
+            <button onclick="openModal('modal7')">Abrir</button>
+        </div>
+        <div class="container">
+            <h3>Riesgos en proyectos</h3>
+            <button onclick="openModal('modal8')">Abrir</button>
+        </div>
+    </div>
+
+    <div id="tab2" class="tab-content">
+        <!-- 2 Contenedores con PDF -->
+        <div class="container">
+            <h3>Diego Alexis Rios Torres</h3>
+            <button onclick="openModal('modalPDF1')">Abrir</button>
+        </div>
+        <div class="container">
+            <h3>Mauro Omar Zaldivar Flores</h3>
+            <button onclick="openModal('modalPDF2')">Abrir</button>
+        </div>
+    </div>
+        <!-- 2 Contenedores calculadoras -->
+    <div id="tab3" class="tab-content">
+        <div class="container">
+            <h3>efectividad_cotidiana</h3>
+            <button onclick="openModal('modalcalc1')">Abrir</button>
+        </div>
+        <div class="container">
+            <h3>efectividad_empresarial</h3>
+            <button onclick="openModal('modalcalc2')">Abrir</button>
+        </div>
+        <div class="container">
+            <h3>efectividad_eficiencia_eficacia</h3>
+            <button onclick="openModal('modalcalc3')">Abrir</button>
+        </div>
+        <div class="container">
+            <h3>rio</h3>
+            <button onclick="openModal('modalcalc4')">Abrir</button>
+        </div>
+    </div>
+
+    <!-- Modales para la primera pestaña -->
+    <div id="modal1" class="modal">
+        <span class="close" onclick="closeModal('modal1')">&times;</span>
+        <h2>Administracion</h2>
+        <p>Proceso de planificar, organizar, dirigir y controlar los recursos de una organización para alcanzar sus objetivos de manera eficiente y eficaz.</p>
+    </div>
+    <div id="modal2" class="modal">
+        <span class="close" onclick="closeModal('modal2')">&times;</span>
+        <h2>Negociacion</h2>
+        <p>Proceso de comunicación entre dos o más partes con el fin de llegar a un acuerdo mutuamente beneficioso.</p>
+    </div>
+    <div id="modal3" class="modal">
+        <span class="close" onclick="closeModal('modal3')">&times;</span>
+        <h2>Manipulacion</h2>
+        <p>Influencia indebida o engañosa sobre personas o situaciones para lograr objetivos personales o específicos, a menudo sin considerar la ética o el bienestar de los demás.</p>
+    </div>
+    <div id="modal4" class="modal">
+        <span class="close" onclick="closeModal('modal4')">&times;</span>
+        <h2>Eficiencia</h2>
+        <p>Capacidad de lograr un objetivo utilizando la menor cantidad posible de recursos, como tiempo, dinero o esfuerzo.</p>
+    </div>
+    <div id="modal5" class="modal">
+        <span class="close" onclick="closeModal('modal5')">&times;</span>
+        <h2>Administracion de proyectos</h2>
+        <p>Disciplina de planificar, organizar, asegurar y gestionar recursos para completar los objetivos de un proyecto dentro de un tiempo, presupuesto y alcance definidos.</p>
+    </div>
+    <div id="modal6" class="modal">
+        <span class="close" onclick="closeModal('modal6')">&times;</span>
+        <h2>Proceso administrativo</h2>
+        <p>Conjunto de etapas o pasos (planificación, organización, dirección y control) que se siguen para administrar eficazmente una organización o proyecto.</p>
+    </div>
+    <div id="modal7" class="modal">
+        <span class="close" onclick="closeModal('modal7')">&times;</span>
+        <h2>Eficacia</h2>
+        <p>Capacidad de alcanzar los objetivos o resultados deseados, independientemente de los recursos utilizados.</p>
+    </div>
+    <div id="modal8" class="modal">
+        <span class="close" onclick="closeModal('modal8')">&times;</span>
+        <h2>Riesgos en proyectos</h2>
+        <p>Posibles eventos o condiciones inciertas que, si ocurren, pueden tener un impacto positivo o negativo en los objetivos del proyecto. La gestión de riesgos implica identificar, evaluar y mitigar estos riesgos.</p>
+    </div>
+
+    <!-- Modales para la segunda pestaña -->
+    <div id="modalPDF1" class="modal">
+        <span class="close" onclick="closeModal('modalPDF1')">&times;</span>
+        <embed src="CV_diego.pdf" type="application/pdf" width="100%" height="600px" />
+    </div>
+    <div id="modalPDF2" class="modal">
+        <span class="close" onclick="closeModal('modalPDF2')">&times;</span>
+        <embed src="CV_mauro.pdf" type="application/pdf" width="100%" height="600px" />
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Modales para la tercera pestaña -->
+    <div id="modalcalc1" class="modal">
+        <span class="close" onclick="closeModal('modalcalc1')">&times;</span>
+        <embed src="efectividad_cotidiana.html" type="" width="100%" height="600px" />
+    </div>
+    <div id="modalcalc2" class="modal">
+        <span class="close" onclick="closeModal('modalcalc2')">&times;</span>
+        <embed src="efectividad_empresarial.html" type="" width="100%" height="600px" />
+    </div>
+    <div id="modalcalc3" class="modal">
+        <span class="close" onclick="closeModal('modalcalc3')">&times;</span>
+        <embed src="efectividad_eficiencia_eficacia.html" type="" width="100%" height="600px" />
+    </div>
+    <div id="modalcalc4" class="modal">
+        <span class="close" onclick="closeModal('modalcalc4')">&times;</span>
+        <embed src="rio.html" type="" width="100%" height="600px" />
+    </div>
+
+
+
+    <script>
+        function showTab(tabId) {
+            var tabs = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        }
+
+        document.getElementById('overlay').onclick = function() {
+            var modals = document.getElementsByClassName('modal');
+            for (var i = 0; i < modals.length; i++) {
+                modals[i].classList.remove('active');
+            }
+            this.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
